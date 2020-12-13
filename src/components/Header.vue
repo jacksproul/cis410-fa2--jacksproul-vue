@@ -9,7 +9,7 @@
     <ul class="navbar-nav ml-auto">
       
       <li class="nav-item">
-        <router-link class="nav-link" to='/videogames'>Videogames</router-link>
+        <router-link class="nav-link" to='/videogame'>Videogames</router-link>
       </li>
 
       <li class="nav-item">
