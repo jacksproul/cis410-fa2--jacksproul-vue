@@ -12,24 +12,24 @@
         <router-link class="nav-link" to='/videogame'>Videogames</router-link>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="auth">
         <router-link class="nav-link" to='/account'>My Account</router-link>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="!auth">
         <router-link class="nav-link" to='/signin'>
           <button class = 'btn btn-warning'>Login</button>
         </router-link>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="!auth">
         <router-link class="nav-link" to='/signup'>
           <button class = 'btn btn-outline-warning text-dark'>Sign Up</button>
         </router-link>
       </li>
 
-      <li class="nav-item">
-          <button class = 'btn btn-warning'>Logout</button>
+      <li class="nav-item" v-if="auth">
+          <button @click="onLogout" class = 'btn btn-warning'>Logout</button>
       </li>
       
     </ul>
@@ -41,6 +41,12 @@
 
 <script>
 export default {
+  computed: {
+    auth(){return this.$store.state.token}
+  },
+  methods: {
+    onLogout(){this.$store.dispatch("logout")}
+  }
     
 }
 </script>

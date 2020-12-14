@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import routes from './routes.js';
 
 Vue.use(Vuex);
 
@@ -19,6 +20,10 @@ export default new Vuex.Store({
         },
         storeGames(state,myGames){
             state.videogame = myGames
+        },
+        clearAuthData(state){
+            state.token = null;
+            state.user = null;
         }
     },
     actions: {
@@ -31,6 +36,17 @@ export default new Vuex.Store({
             .catch(()=>{
                 console.log("error in getGames action")
             })
+        },
+        logout({commit, state}){
+            axios.post('/player/logout', null, {
+                headers: {
+                    Authorization: `Bearer ${state.token}`
+                }
+            });
+
+            commit('clearAuthData');
+
+            routes.replace("/");
         }
 
     }
