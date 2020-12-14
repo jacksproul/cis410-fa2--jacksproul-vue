@@ -19,7 +19,7 @@ const routes = [
     {path: '/videogame', component: Videogame},
     {path: '/videogame/:pk', component: GameDetails,
         children: [
-            {path: 'review', component: ReviewCreate}
+            {path: '/review', component: ReviewCreate}
         ]},
     {path: '/signup', component: SignUp},
     {path: '/:invalidroute(.*)', component: NotFound},
